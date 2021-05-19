@@ -25,6 +25,7 @@ import { EstatisticaComponent } from './menu-principal/estatistica/estatistica.c
 import { PersonalizarComponent } from './menu-principal/personalizar/personalizar.component';
 import { JogoComponent } from './menu-principal/jogo/jogo.component';
 import { NavbarComponent } from './navbar/navbar.component';
+import { CenaComponent } from './menu-principal/jogo/cena/cena.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { NavbarComponent } from './navbar/navbar.component';
     PersonalizarComponent,
     JogoComponent,
     NavbarComponent,
-    SafeUrlPipe
+    SafeUrlPipe,
+    CenaComponent
   ],
   imports: [
     BrowserModule,
