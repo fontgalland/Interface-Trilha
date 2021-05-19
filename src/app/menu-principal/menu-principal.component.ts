@@ -11,6 +11,7 @@ export class MenuPrincipalComponent implements OnInit {
   constructor(public router: Router) { }
 
   ngOnInit(): void {
+    console.log(JSON.parse(localStorage.getItem('userInfo')));
   }
 
 }

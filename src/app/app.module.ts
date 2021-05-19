@@ -1,3 +1,4 @@
+import { AuthGuardService } from './auth/auth-guard.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
@@ -58,7 +59,7 @@ import { CenaComponent } from './menu-principal/jogo/cena/cena.component';
     HttpClientModule,
   ],
   providers: [
-
+    AuthGuardService
   ],
   bootstrap: [AppComponent]
 })

@@ -18,8 +18,10 @@ export class PersonalizarService {
   })
 
   listItems(userId) {
-
-    return this.http.get<any>(this.url + '/personalizar', userId)
+    let body = {
+      id: userId
+    }
+    return this.http.post<any>(this.url + '/personalizar', body)
 
   }
 

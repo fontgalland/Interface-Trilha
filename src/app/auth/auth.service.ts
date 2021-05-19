@@ -12,28 +12,29 @@ import { Observable, Subject } from 'rxjs';
   providedIn: 'root'
 })
 export class AuthService {
+  userInfo;
 
-  constructor(private http: HttpClient, private router: Router) { }
+  constructor(private http: HttpClient, private router: Router) { 
+    this.userInfo = JSON.parse(localStorage.getItem('userInfo'));
+  }
 
 
   url = environment.apiURL;
-  userInfo = undefined
+
   public currentUser: Observable<any>
 
   public isAuthenticated(): boolean {
-    const token = localStorage.getItem('token');
-    // Check whether the token is expired and return
-    // true or false
-    return true;
+    if(localStorage.getItem('userInfo') == null) {
+      return false
+    } else {return true};
     // !this.jwtHelper.isTokenExpired(token);
   }
 
   loginUsuario(user): Observable<any> {
     let credential = {
       password: user.value.password,
-      username: user.value.user
+      username: user.value.username
     }
-
 
     return this.http.post<any>(this.url + '/login', credential)
   }
