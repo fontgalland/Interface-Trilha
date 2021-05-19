@@ -9,8 +9,7 @@ import { environment } from 'src/environments/environment';
 export class UsersService {
 
   url = environment.apiURL
-  // v1 = environment.version
-  cors = 'https://cors-anywhere.herokuapp.com/'
+
   token = localStorage.getItem('token');
   headers = new HttpHeaders({
     'Content-Type': 'application/json',
@@ -27,18 +26,9 @@ export class UsersService {
       email: user.value.email,
     }
 
-    return this.http.post<any>(this.cors + this.url + '/cadastro', credential)
+    return this.http.post<any>(this.url + '/cadastro', credential)
 
   }
 
-  // getAllUsers() {
-  //   return this.http.get(`${this.url}/${this.v1}/users`, {headers: this.headers})
-  // }
-
-  // deleteUser(user): Observable<any>
-  // {
-  //   return this.http.delete<any>(`${this.url}/${this.v1}/users/delete/${user.email}`, {headers: this.headers })
-
-  // }
 
 }

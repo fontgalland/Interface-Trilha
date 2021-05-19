@@ -35,8 +35,9 @@ export class AuthService {
     }
 
 
-    return this.http.post<any>(this.url + '/v1' + '/auth/login', credential)
+    return this.http.post<any>(this.url + '/login', credential)
   }
+  
   _userActionOccured: Subject<void> = new Subject();
   get userActionOccured(): Observable<void> { return this._userActionOccured.asObservable() };
 

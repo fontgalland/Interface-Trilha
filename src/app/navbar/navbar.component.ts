@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { fadeStateTrigger } from '../animations/animation';
@@ -10,12 +11,24 @@ import { fadeStateTrigger } from '../animations/animation';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor(public location: Location) { }
+  constructor(public location: Location, public router: Router) { }
 
   ngOnInit(): void {
   }
 
+  logoutUser() {
+    this.router.navigate(['/login']);
+  }
+
   isHomeRouteActivated(): boolean {
     return this.location.path().indexOf('/menu') > -1;
+  }
+
+  isLoginRouteActivated(): boolean {
+    return this.location.path().indexOf('/login') > -1;
+  }
+
+  isCadastroRouteActivated(): boolean {
+    return this.location.path().indexOf('/cadastro') > -1;
   }
 }
