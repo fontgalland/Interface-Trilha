@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
+import Piece from './helpers/piece';
 
 @Component({
   selector: 'app-jogo',
@@ -36,27 +37,39 @@ export class JogoComponent implements OnInit {
 
 class MainScene extends Phaser.Scene {
   cursors;
-
+  playerPieces = [0,0,0,0,0,0,0,0,0]
+  dealPieces: () => void;
+  piecesDealed = false;
   constructor() {
     super({ key: 'main' });
   }
   create() {
     this.add.image(400, 400, 'board');
+    this.dealPieces = () => {
+      for (let i = 0; i < this.playerPieces.length; i++) {
+        let playerPiece = new Piece(this);
+        playerPiece.render(50, 50 + (i*80 ), 'piece_player1');
+      }
+      this.piecesDealed = true;
+    }
 
-
+    this.input.on('drag', function (pointer, gameObject, dragX, dragY, player) {
+      gameObject.x = dragX;
+      gameObject.y = dragY;
+    })
   }
+
   preload() {
     this.load.image('board', '../../../assets/board.svg');
-    this.load.image('piece_player1', '../../../assets/I magem2.svg');
-
+    this.load.image('piece_player1', '../../../assets/wood_piece.png');
+    this.dealPieces();
   }
+
   update() {
     this.input.on('pointerdown', function (pointer) {
-
-      console.log('down');
-
-      this.add.sprite(pointer.x, pointer.y, 'piece_player1');
-
+      if (!this.piecesDealed) {
+        this.dealPieces();
+      }
   }, this);
   }
 }
