@@ -1,3 +1,4 @@
+import { LojaService } from './../../services/loja.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LojaComponent implements OnInit {
 
-  constructor() { }
+  constructor(private lojaService: LojaService) { }
 
   ngOnInit(): void {
+  }
+
+  listarItems() {
+    this.lojaService.listItem().subscribe(resp => {
+      console.log(resp);
+    })
   }
 
 }

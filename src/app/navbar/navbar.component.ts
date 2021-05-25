@@ -12,8 +12,11 @@ import { fadeStateTrigger } from '../animations/animation';
 export class NavbarComponent implements OnInit {
 
   constructor(public location: Location, public router: Router) { }
+  user;
 
   ngOnInit(): void {
+    this.user = JSON.parse(localStorage.getItem('userInfo'));
+    console.log(this.user)
   }
 
   logoutUser() {

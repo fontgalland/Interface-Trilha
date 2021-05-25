@@ -7,9 +7,61 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EstatisticaComponent implements OnInit {
 
+  rankings = [
+    {
+      position: 1,
+      username: 'dieguito'
+    },
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    },
+    {
+      position: 1,
+      username: 'dieguito'
+    },
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }, 
+    {
+      position: 1,
+      username: 'dieguito'
+    }
+  ]
   constructor() { }
 
+
   ngOnInit(): void {
+    console.log(this.rankings)
   }
 
 }

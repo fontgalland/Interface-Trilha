@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
 import Piece from './helpers/piece';
+import Game from './helpers/game';
+import io from 'socket.io-client';
 
 @Component({
   selector: 'app-jogo',
@@ -40,18 +42,32 @@ class MainScene extends Phaser.Scene {
   playerPieces = [0,0,0,0,0,0,0,0,0]
   dealPieces: () => void;
   piecesDealed = false;
+  socket: any;
+  isPlayerA: boolean;
+  opponentPieces: any[];
   constructor() {
     super({ key: 'main' });
   }
   create() {
+
+    this.socket = io('http://localhost:3000')
+    this.isPlayerA = false;
+    this.opponentPieces = [];
+    let game = new Game(this);
+
+    this.socket.on('connect', function() {
+      console.log('connected!')
+    })
+
+    this.socket.on('isPlayerA', function() {
+      this.isPlayerA = true;
+    })
+
+    this.socket.on('startGame', function () {
+      this.game.startGame();
+    })
+
     this.add.image(400, 400, 'board');
-    this.dealPieces = () => {
-      for (let i = 0; i < this.playerPieces.length; i++) {
-        let playerPiece = new Piece(this);
-        playerPiece.render(50, 50 + (i*80 ), 'piece_player1');
-      }
-      this.piecesDealed = true;
-    }
 
     this.input.on('drag', function (pointer, gameObject, dragX, dragY, player) {
       gameObject.x = dragX;
@@ -62,14 +78,9 @@ class MainScene extends Phaser.Scene {
   preload() {
     this.load.image('board', '../../../assets/board.svg');
     this.load.image('piece_player1', '../../../assets/wood_piece.png');
-    this.dealPieces();
   }
 
   update() {
-    this.input.on('pointerdown', function (pointer) {
-      if (!this.piecesDealed) {
-        this.dealPieces();
-      }
-  }, this);
+
   }
 }
