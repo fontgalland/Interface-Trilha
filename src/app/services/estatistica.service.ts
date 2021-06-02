@@ -18,7 +18,8 @@ export class EstatisticaService {
   })
 
   getUserStatistics(user) {
-    return this.http.get<any>(this.url + '/estatistica', user)
+
+    return this.http.get<any>(this.url + '/estatistica/' + user)
   }
 
 }

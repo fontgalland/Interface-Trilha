@@ -4,29 +4,21 @@
     <div class="choose-menu">
       <span class="label">Peça</span>
       <ul class="list-items">
-        <!-- <li *ngFor='let piece of pieces; let i'>
+        <li *ngFor='let piece of pieces; let i'>
           <img src="{{piece.urlImg}}" alt="">
-          <button *ngIf="piece.equipped" mat-flat-button class="botao">
-            <span>Equipado
-              <mat-icon>check</mat-icon>
-            </span>
-            <span *ngIf="!piece.userOwns" [routerLink]="['/loja']" routerLinkActive="router-link-active">Ir à Loja
-              <mat-icon>shopping_cart</mat-icon>
-            </span>
-          </button>
-          <button *ngIf="!piece.equipped && piece.userOwns" (click)="equipPiece(i)" mat-flat-button class="botao">
+          <button *ngIf="!piece.userOwns" mat-flat-button class="botao">
             <span>
-              Usar
+              Já possui
             </span>
           </button> 
-          <button *ngIf="!piece.userOwns" (click)="equipPiece(i)"
+          <button *ngIf="!piece.userOwns" (click)="buyPiece(i)"
           mat-flat-button class="botao">
-            <span >Ir à Loja
+            <span >R$ {{piece.value}}
               <mat-icon>shopping_cart</mat-icon>
             </span>
           </button> 
 
-        </li> -->
+        </li>
       </ul>
     </div>
   </div>

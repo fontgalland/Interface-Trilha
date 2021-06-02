@@ -4,6 +4,7 @@ export default class Game {
     startGame: () => void;
     constructor(scene) {
         this.startGame = () => {
+            console.log('Jogo iniciando')
             let playerSprite;
             let opponentSprite;
             if(scene.isPlayerA) {
@@ -15,10 +16,10 @@ export default class Game {
             }
             for (let i = 0; i < 9; i++) {
                 let playerPiece = new Piece(scene);
-                playerPiece.render(50, 50 + (i*80 ), playerSprite);
+                playerPiece.render(20, 80 + (i*80 ), playerSprite);
 
                 let opponentPiece = new Piece(scene);
-                scene.opponentPieces.push(opponentPiece.render(450, 50 + (i*80 ), opponentSprite).disableInteractive());
+                scene.opponentPieces.push(opponentPiece.render(780, 80 + (i*80 ), opponentSprite).disableInteractive());
             }
         }
     }

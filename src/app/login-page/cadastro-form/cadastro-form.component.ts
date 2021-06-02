@@ -59,7 +59,7 @@ export class CadastroFormComponent implements OnInit {
       if (this.cadastroForm.status == 'VALID') {
         this.userService.signupUsuario(this.cadastroForm).subscribe(resp => {
           console.log(resp);
-          this.openSnackBar('Você receberá um e-mail para confirmar seu cadastro, obrigado por se cadastrar', 'Fechar')
+          this.openSnackBar('Obrigado por se cadastrar', 'Fechar')
           this.route.navigate(['/login'])
         }, err => {
           this.openSnackBar('Erro no seu cadastro, usuário já existe ou não está pré-registrado. \nContate o administrador', 'Fechar')
