@@ -1,3 +1,4 @@
+import { JogoService } from './../../services/jogo.service';
 import { Component, OnInit } from '@angular/core';
 import * as Phaser from 'phaser';
 import Piece from './helpers/piece';
@@ -14,7 +15,8 @@ export class JogoComponent implements OnInit {
   phaserGame: Phaser.Game;
   config: Phaser.Types.Core.GameConfig;
 
-  constructor() {
+  constructor(private jogoService: JogoService) {
+
     this.config = {
       type: Phaser.AUTO,
       height: 800,
@@ -157,9 +159,10 @@ class MainScene extends Phaser.Scene {
   preload() {
     this.load.image('board', '../../../assets/board.svg');
     this.load.image('piece_player1', '../../../assets/wood_piece.png');
+    this.load.image('piece_player2', '../../../assets/black_piece.png');
   }
 
   update() {
-
+    // console.log('oi');
   }
 }

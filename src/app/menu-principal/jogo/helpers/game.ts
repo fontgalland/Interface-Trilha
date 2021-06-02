@@ -9,9 +9,9 @@ export default class Game {
             let opponentSprite;
             if(scene.isPlayerA) {
                 playerSprite = 'piece_player1';
-                opponentSprite = 'piece_player1';
+                opponentSprite = 'piece_player2';
             } else {
-                playerSprite = 'piece_player1';
+                playerSprite = 'piece_player2';
                 opponentSprite = 'piece_player1';
             }
             for (let i = 0; i < 9; i++) {
